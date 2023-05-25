@@ -11,3 +11,11 @@ class FieldDTO(APIModel):
     id: int
     name: str
     usable_area: float
+
+class UserDTO(APIModel):
+    username: str
+
+class ReportDTO(APIModel):
+    user: UserDTO
+    farms: list[FarmDTO]
+    fields: list[FieldDTO]
