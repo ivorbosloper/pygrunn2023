@@ -13,8 +13,10 @@ from django.core.asgi import get_asgi_application
 
 apps.populate(settings.INSTALLED_APPS)
 
+from django.conf import settings
+
 from pyapp.endpoints import router
 
-application = FastAPI(openapi_url="/api/openapi.json", docs_url="/api/docs")
+application = FastAPI(debug=settings.DEBUG, openapi_url="/api/openapi.json", docs_url="/api/docs")
 application.include_router(router, prefix="/api")
 application.mount("/", get_asgi_application())
